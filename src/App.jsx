@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 
-const API = '/api/memories'
+const API = `${import.meta.env.VITE_API_URL}/api/memories`
 const blankForm = () => ({
   title: '',
   date: new Date().toISOString().slice(0, 10),
