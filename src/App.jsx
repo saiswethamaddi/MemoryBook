@@ -21,8 +21,16 @@ async function parseResponse(response) {
   return payload
 }
 
+const API_BASE = import.meta.env.VITE_API_URL || ''
+
 function imageSource(photo) {
-  return photo?.path || ''
+  if (!photo?.path) return ''
+
+  if (photo.path.startsWith('http')) {
+    return photo.path
+  }
+
+  return `${API_BASE}${photo.path}`
 }
 
 function shortDate(value) {
