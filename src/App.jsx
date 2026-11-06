@@ -123,9 +123,12 @@ function App() {
   }
 
   function choosePhotos(event) {
-    setNewPhotos((current) => [...current, ...Array.from(event.target.files || [])].slice(0, 10))
-    event.target.value = ''
-  }
+  const files = Array.from(event.target.files || []);
+
+  setNewPhotos((current) =>
+    [...current, ...files].slice(0, 10)
+  );
+}
 
   async function saveMemory(event) {
     event.preventDefault()
