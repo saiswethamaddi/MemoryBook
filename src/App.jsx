@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 
-const API = `${import.meta.env.VITE_API_URL}/api/memories`
+const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '')
+const API = `${API_BASE}/api/memories`
+
 const blankForm = () => ({
   title: '',
   date: new Date().toISOString().slice(0, 10),
@@ -21,7 +23,7 @@ async function parseResponse(response) {
   return payload
 }
 
-const API_BASE = import.meta.env.VITE_API_URL || ''
+
 
 function imageSource(photo) {
   if (!photo?.path) return ''
